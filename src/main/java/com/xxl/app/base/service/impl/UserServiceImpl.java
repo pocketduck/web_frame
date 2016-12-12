@@ -1,14 +1,11 @@
 package com.xxl.app.base.service.impl;
 
-import com.xxl.app.base.bean.UserBean;
+import com.xxl.app.base.bean.User;
 import com.xxl.app.base.dao.UserDao;
 import com.xxl.app.base.service.IUserService;
-import org.apache.ibatis.annotations.Param;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 
@@ -21,12 +18,17 @@ public class UserServiceImpl implements IUserService{
     @Autowired
     private UserDao userDao;
 
-    public UserBean getUserBeanById(long id) {
-        UserBean user =  userDao.getUserBeanById(id);
+    public User findById(long id) {
+        User user =  userDao.findById(id);
         return user;
     }
 
-    public List<UserBean> getAllUserBean() {
+    public User findByUsername(String username) {
+        User user =  userDao.findByUsername(username);
+        return user;
+    }
+
+    public List<User> getAllUserBean() {
         return userDao.getAllUserBean();
     }
 }

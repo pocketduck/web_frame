@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.xxl.app.base.service.IIndexService;
+
 
 /**
  * index action类
@@ -14,10 +14,7 @@ import com.xxl.app.base.service.IIndexService;
  */
 @Controller
 public class IndexControl {
-	
-	@Autowired
-	private IIndexService indexService;
-	
+
 	@RequestMapping(value="index")
 	public String index(Model mode){
 //		indexService.doIndex();

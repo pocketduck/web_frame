@@ -4,8 +4,39 @@
 
 
 <mapper namespace="com.xxl.app.base.dao.UserDao">
-    <select id="getUserBeanById" parameterType="long" resultType="com.xxl.app.base.bean.UserBean">
+
+    <resultMap type="com.xxl.app.base.bean.User" id="userResult">
+        <id property="id" column="id"/>
+        <result property="userName" column="username"/>
+        <result property="password" column="password"/>
+        <result property="age" column="age"/>
+        <result property="address" column="address"/>
+        <result property="email" column="email"/>
+        <result property="state" column="state"/>
+
+        <collection property="userProfiles" ofType="com.xxl.app.base.bean.UserProfile">
+
+            <result property="uid" column="uid"/>
+            <result property="type" column="type"/>
+        </collection>
+   </resultMap>
+    <select id="findById" parameterType="long" resultType="com.xxl.app.base.bean.User">
         select * from t_user where id = #{id}
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultMap = "userResult">
+        SELECT u.`id` AS id,
+            u.`username` AS username,
+            u.`password` AS 'password',
+            u.`age` AS age,
+            u.`address` AS address,
+            u.`email` AS email,
+            u.`state` AS state,
+            p.`uid` AS uid,
+            p.`type` AS 'type'
+         FROM t_user u
+         LEFT JOIN user_profile p ON u.`id` = p.`uid`
+         where u.`username` = #{username}
     </select>
 
     <select id="getAllUserBean"  resultType="java.util.HashMap">
