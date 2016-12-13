@@ -1,13 +1,15 @@
-package com.xxl.app.base.security.service;
+package com.xxl.app.base.security;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import com.xxl.app.base.bean.UserProfile;
 import com.xxl.app.base.service.IUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -15,23 +17,27 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * Created by 58 on 2016-12-12.
  */
 public class CustomAuthenticationProvider extends
          AbstractUserDetailsAuthenticationProvider {
-
+    private static final Logger logger =  LoggerFactory.getLogger(CustomAuthenticationProvider.class);
     @Autowired
     private IUserService userService;
+
+    private MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
+
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails,
-                                                  UsernamePasswordAuthenticationToken authentication)
-            throws AuthenticationException {
-        //»Áπ˚œÎ◊ˆµ„∂ÓÕ‚µƒºÏ≤È,ø…“‘‘⁄’‚∏ˆ∑Ω∑®¿Ô¥¶¿Ì,–£—È≤ªÕ® ±,÷±Ω”≈◊“Ï≥£º¥ø…
-        System.out
-                .println("CustomAuthenticationProvider.additionalAuthenticationChecks() is called!");
+                                                  UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        String encPass = userDetails.getPassword();//Â≠òÂÇ®ÁöÑÂä†ÂØÜÂØÜÁ†Å
+        String rowPass = (String)authentication.getCredentials();
+        logger.info("ÁôªÂΩïÂ§±Ë¥• ÂØÜÁ†ÅÈîôËØØ username==" + userDetails.getUsername());
+               if (!SecurityUtil.matches(encPass, rowPass)) {
+            throw new AuthenticationServiceException(messages.getMessage("WrongPassword"));
+        }
     }
 
     @Override
@@ -39,13 +45,11 @@ public class CustomAuthenticationProvider extends
                                        UsernamePasswordAuthenticationToken authentication)
             throws AuthenticationException {
 
-        System.out
-                .println("CustomAuthenticationProvider.retrieveUser() is called!");
         com.xxl.app.base.bean.User user = userService.findByUsername(username);
         System.out.println("User : "+user);
         if(user==null){
-            System.out.println("User not found");
-            throw new UsernameNotFoundException("Username not found");
+            logger.info("ÁôªÂΩïÂ§±Ë¥• Áî®Êà∑‰∏çÂ≠òÂú® userusername==" + username);
+            throw new AuthenticationServiceException(messages.getMessage("WrongPassword"));
         }
         return new User(user.getUserName(), user.getPassword(),
                 user.getState().equals("Active"), true, true, true, getGrantedAuthorities(user));
@@ -55,10 +59,9 @@ public class CustomAuthenticationProvider extends
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         for(UserProfile userProfile : user.getUserProfiles()){
-            System.out.println("UserProfile : "+userProfile);
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
+         authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
         }
-        System.out.print("authorities :"+authorities);
+        logger.info("ÁôªÂΩï user==" +user.getUserName() +"ËßíËâ≤==" + authorities);
         return authorities;
     }
 }

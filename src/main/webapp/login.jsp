@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">

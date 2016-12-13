@@ -13,23 +13,13 @@
                      username-parameter="username"
                      password-parameter="password"
                      authentication-success-handler-ref="customSuccessHandler"
-                     authentication-failure-url="/access_denied.html"
+                     authentication-failure-url="/loginfailed.html"
                      default-target-url="/home.html" />
         <csrf/>
     </http>
-
-    <!--authentication-manager >
-        <authentication-provider user-service-ref="customUserDetailsService">
-          <password-encoder hash="md5">
-            <salt-source user-property="username"/>
-        </password-encoder>
-
-        </authentication-provider>
-    </authentication-manager-->
-
     <authentication-manager >
         <authentication-provider ref="customAuthenticationProvider" />
     </authentication-manager>
-    <beans:bean id="customAuthenticationProvider" class="com.xxl.app.base.security.service.CustomAuthenticationProvider" />
+    <beans:bean id="customAuthenticationProvider" class="com.xxl.app.base.security.CustomAuthenticationProvider" />
     <beans:bean id="customSuccessHandler" class="com.xxl.app.base.security.CustomSuccessHandler" />
 </beans:beans>

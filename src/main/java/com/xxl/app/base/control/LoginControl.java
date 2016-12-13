@@ -50,6 +50,13 @@ public class LoginControl {
 		return "access_denied";
 	}
 
+	@RequestMapping(value = "loginfailed", method = RequestMethod.GET)
+	public String loginfailed(ModelMap model) {
+
+		return "login/login_failed";
+	}
+
+
 	@RequestMapping("main")
 	public String main(Model mode) {
 		UserDetails userDetails =
