@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.xxl.app.base.util.UniqueIDUtils;
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
@@ -38,6 +39,12 @@ public class LoginControl {
 	public String testLogin(HttpServletRequest request){
 		System.out.println("test login");
 
+		try {
+			long id =  UniqueIDUtils.getUniqueID();
+			logger.info("id==" +id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("result", "test Success");
