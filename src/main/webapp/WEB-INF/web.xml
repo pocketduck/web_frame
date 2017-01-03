@@ -8,7 +8,7 @@
 	<!-- 区分项目名称，防止默认重名 -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>maven.xxl_web.root</param-value>
+		<param-value>com.chexiao.platform</param-value>
 	</context-param>
 
 	<!-- Spring的log4j监听器 -->

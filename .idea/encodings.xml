@@ -2,9 +2,12 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/xxl/app/base/security/CustomAuthenticationProvider.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/xxl/app/base/util/IdWorker.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/xxl/app/base/util/UniqueIDUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chexiao/platform/base/security/CustomAuthenticationProvider.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chexiao/platform/base/util/IdWorker.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chexiao/platform/base/util/UniqueIDUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/gpsdb_0.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/gpsdb_1.properties" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/gpsdata.jar" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/images/favor.png" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>

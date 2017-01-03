@@ -7,8 +7,7 @@
     <http auto-config="true" >
         <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/main.html" access="hasRole('USER') or hasRole('ADMIN')" />
-        <intercept-url pattern="/admin**.html" access="hasRole('ADMIN')" />
-        <intercept-url pattern="/dba**.html" access="hasRole('ADMIN') and hasRole('DBA')" />
+        <intercept-url pattern="/platform/**" access="hasRole('USER') or hasRole('ADMIN')" />
         <form-login  login-page="/login.jsp"
                      username-parameter="username"
                      password-parameter="password"
@@ -20,6 +19,6 @@
     <authentication-manager >
         <authentication-provider ref="customAuthenticationProvider" />
     </authentication-manager>
-    <beans:bean id="customAuthenticationProvider" class="com.xxl.app.base.security.CustomAuthenticationProvider" />
-    <beans:bean id="customSuccessHandler" class="com.xxl.app.base.security.CustomSuccessHandler" />
+    <beans:bean id="customAuthenticationProvider" class="com.chexiao.platform.base.security.CustomAuthenticationProvider" />
+    <beans:bean id="customSuccessHandler" class="com.chexiao.platform.base.security.CustomSuccessHandler" />
 </beans:beans>
