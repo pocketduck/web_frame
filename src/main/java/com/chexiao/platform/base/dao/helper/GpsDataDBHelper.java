@@ -4,7 +4,6 @@ package com.chexiao.platform.base.dao.helper;
 import com.chexiao.base.dao.DAOOperator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.core.io.ClassPathResource;
 
 
 public class GpsDataDBHelper {
@@ -17,7 +16,6 @@ public class GpsDataDBHelper {
 		try {
 			daoHelperArr = new DAOOperator[2];
 
-//			String path1 = new ClassPathResource("db/gpsdb_0.properties").getPath();
 
 			String path1 = Thread.currentThread().getContextClassLoader().getResource("db/gpsdb_0.properties").getPath();
 			String path2 = Thread.currentThread().getContextClassLoader().getResource("db/gpsdb_1.properties").getPath();

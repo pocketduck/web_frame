@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="ThemeBucket">
+    <meta name="author" content="fulei">
     <link rel="shortcut icon" href="images/favor.png">
-    <title>Login</title>
+    <title>车晓科技</title>
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">

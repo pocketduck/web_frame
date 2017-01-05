@@ -5,7 +5,6 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
     <http auto-config="true" >
-        <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/main.html" access="hasRole('USER') or hasRole('ADMIN')" />
         <intercept-url pattern="/platform/**" access="hasRole('USER') or hasRole('ADMIN')" />
         <form-login  login-page="/login.jsp"
