@@ -24,6 +24,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="maven_web" />
+      </profile>
+      <profile default="false" name="Annotation profile for web_frame" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
         <module name="web_frame" />
       </profile>
     </annotationProcessing>
