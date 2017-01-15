@@ -2,13 +2,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chexiao</groupId>
-    <artifactId>platform</artifactId>
+    <artifactId>monkeyking</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>chexiao platform</name>
+    <name>monkeyking</name>
     <url>http://maven.apache.org</url>
     <build>
-        <finalName>chexiaoplatform</finalName>
+        <finalName>monkeyking</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
@@ -163,6 +173,11 @@
             <version>4.0</version>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+        <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
@@ -184,16 +199,7 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-            <version>5.16.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring</artifactId>
-            <version>5.16.3</version>
-        </dependency>
+
         <!--依赖了gpsdata服务，本来不需要下面两个包-->
         <dependency>
             <groupId>org.jyaml</groupId>

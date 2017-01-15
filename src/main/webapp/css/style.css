@@ -93,10 +93,14 @@ General backgrounds
 }
 
 .bg-grey {
-  background-image: none !important;
-  background-color: #555555 !important;
-}
+   background-image: none !important;
+   background-color: #555555 !important;
+ }
 
+.bg-orange {
+  background-image: none !important;
+  background-color: #FF8C00 !important;
+}
 /***
 Apply fix for font awesome icons.
 ***/
@@ -3210,6 +3214,12 @@ Tiles(new in v1.1.1)
 .tile.double-down {
   height: 278px !important;
 }
+.tile.triple {
+  width: 417px !important;
+}
+.tile.triple-down {
+  height: 417px !important;
+}
 
 .tile:active, .tile.selected {
   border-color: #ccc;
@@ -3259,6 +3269,7 @@ Tiles(new in v1.1.1)
   color: #ffffff;
   margin-bottom: 10px;
 }
+
 
 .tile .tile-body img {
   float: left;
@@ -3367,6 +3378,31 @@ Tiles(new in v1.1.1)
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 15px;
+  font-weight: 400;
+  font-size: 13px;
+  font-smooth: always;
+  color: #ffffff;
+}
+.tile .tile-object > .nameblack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 15px;
+  font-weight: 500;
+  font-size: 15px;
+  font-smooth: always;
+  color: #000000;
+}
+
+.tile .tile-object > .name2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
   font-weight: 400;
   font-size: 13px;
   font-smooth: always;

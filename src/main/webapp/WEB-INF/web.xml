@@ -8,7 +8,7 @@
 	<!-- 区分项目名称，防止默认重名 -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>com.chexiao.platform</param-value>
+		<param-value>com.chexiao.monkeyking</param-value>
 	</context-param>
 
 	<!-- Spring的log4j监听器 -->
@@ -61,14 +61,14 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.html</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>  
 	
 	<welcome-file-list>
-		<welcome-file>main.html</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>

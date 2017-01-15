@@ -1,23 +1,35 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security-4.0.xsd ">
 
     <http auto-config="true" >
-        <intercept-url pattern="/main.html" access="hasRole('USER') or hasRole('ADMIN')" />
-        <intercept-url pattern="/platform/**" access="hasRole('USER') or hasRole('ADMIN')" />
+        <!--角色说明
+         USER 系统一般用户
+        ADMIN 超级管理员
+        SYSADMIN 系统管理员 可以创建账号/客户
+        CHEXIAO 公司内部人
+        INSTALL GPS安装人
+        -->
+        <intercept-url pattern="/main.html" access="hasRole('USER') or hasRole('ADMIN') or hasRole('CHEXIAO') or hasRole('INSTALL')" />
+        <intercept-url pattern="/mk/**" access="hasRole('USER') or hasRole('ADMIN') or hasRole('CHEXIAO') or hasRole('INSTALL')" />
+        <intercept-url pattern="/mk/gps" access="hasRole('USER') or hasRole('ADMIN') or hasRole('CHEXIAO')" />
+        <intercept-url pattern="/mk/install" access="hasRole('INSTALL') or hasRole('ADMIN') or hasRole('CHEXIAO')" />
         <form-login  login-page="/login.jsp"
                      username-parameter="username"
                      password-parameter="password"
                      authentication-success-handler-ref="customSuccessHandler"
                      authentication-failure-url="/loginfailed.html"
-                     default-target-url="/home.html" />
-        <csrf/>
+                     default-target-url="/main.html" />
+        <access-denied-handler error-page="/403" />
+        <csrf disabled="true"/>
     </http>
     <authentication-manager >
         <authentication-provider ref="customAuthenticationProvider" />
     </authentication-manager>
-    <beans:bean id="customAuthenticationProvider" class="com.chexiao.platform.base.security.CustomAuthenticationProvider" />
-    <beans:bean id="customSuccessHandler" class="com.chexiao.platform.base.security.CustomSuccessHandler" />
+    <beans:bean id="customAuthenticationProvider" class="com.chexiao.monkeyking.base.security.CustomAuthenticationProvider" />
+    <beans:bean id="customSuccessHandler" class="com.chexiao.monkeyking.base.security.CustomSuccessHandler" />
 </beans:beans>
